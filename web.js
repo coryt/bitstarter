@@ -5,8 +5,9 @@ var fs = require('fs');
 app.use(express.logger());
 
 app.get('/', function(request, response) {
-  var contents = fs.readFileSync("index.html");
-  response.send(contents);
+    fs.readFile("index.html", function (err, data) {
+	response.send(data);
+    });
 });
 
 var port = process.env.PORT || 5000;
